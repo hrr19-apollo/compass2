@@ -1,53 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView,
+  StatusBar,
+  Dimensions,
+  Navigator
 } from 'react-native';
+import Login from './src/components/Login';
+import Map from './src/components/Map';
 
-export default class compass2 extends Component {
+
+class compass2 extends Component {
+
+  renderScene(route, navigator) {
+    const { name, passProps } = route;
+    if (name === 'Login') {
+      return <Login navigator={navigator} />
+    } else if (name === 'Map') {
+      return <Map navigator={navigator} />
+    } else if (name === 'ChatList') {
+    } else if (name === 'Chat') {
+    } else if (name === 'UserProfile') {
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+      <Navigator
+      style={{ backgroundColor: 'white', }}
+      initialRoute={{ name:'Login' }}
+      renderScene={this.renderScene}
+      navigationBar={
+        <Navigator.NavigationBar
+          routeMapper={{
+            LeftButton: (route, navigator, index, navState) =>
+              { return; },
+            RightButton: (route, navigator, index, navState) =>
+              { return; },
+            Title: (route, navigator, index, navState) =>
+              { return (<Text>Compass</Text>); },
+           }}
+           style={{backgroundColor: 'white', height: 50}}
+         />
+        }
+      />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+    )
+  }
+};
+
+
 
 AppRegistry.registerComponent('compass2', () => compass2);
+
+
+
+
+
+
