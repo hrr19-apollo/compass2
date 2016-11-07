@@ -38,7 +38,7 @@ const ChatListItem = ({ navigator, userName, lastMessage }) => {
 
 const styles = {
   container: {
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width -20,
     height: 80,
     backgroundColor: 'white',
 
@@ -48,7 +48,6 @@ const styles = {
     borderBottomWidth: 0.5,
     borderBottomColor: colors.extraLightGrey,
 
-    paddingLeft: 20,
   },
 
   name: {
