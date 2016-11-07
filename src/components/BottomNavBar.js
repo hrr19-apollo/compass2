@@ -9,7 +9,7 @@ import {
 
 import colors from '../styles/colors';
 
-const BottomNavBar = ({ navigator, currentView }) => {
+const BottomNavBar = ({ navigator, viewLabel }) => {
 
   // destructuring the styles for easier readability inside of returned JSX
   const { 
@@ -18,22 +18,27 @@ const BottomNavBar = ({ navigator, currentView }) => {
     text,
   } = styles;
 
-  const menu = ['Map', 'Chat', 'User'];
+
+  const menu = [
+    {label: 'Map', navTo: 'Map'}, 
+    {label: 'Chat', navTo: 'ChatList'}, 
+    {label: 'User', navTo: 'UserProfile'}
+  ];
 
   const renderText = function() {
     return menu.map(option => {
 
       let style = text;
-      if (option === currentView) {
+      if (option.label === viewLabel) {
         style = {...text, ...{color: colors.lightBlue}};
       }
       return (
         <TouchableHighlight 
-          onPress={() => navigator.push({name: 'Map'})} 
+          onPress={() => navigator.push({name: option.navTo})} 
           underlayColor={colors.extraLightGrey} 
-          key={option}
+          key={option.label}
         >
-          <Text style={style}>{option}</Text>
+          <Text style={style}>{option.label}</Text>
         </TouchableHighlight>
       )
     })

@@ -27,14 +27,14 @@ class compass2 extends Component {
       return (
         <View> 
           <Map navigator={navigator} />
-          <BottomNavBar currentView={'Map'} navigator={navigator} /> 
+          <BottomNavBar viewLabel={'Map'} navigator={navigator} /> 
         </View>
         )
     } else if (name === 'ChatList') {
       return (
         <View> 
           <ChatList navigator={navigator} />
-          <BottomNavBar currentView={'Chat'} navigator={navigator} /> 
+          <BottomNavBar viewLabel={'Chat'} navigator={navigator} /> 
         </View>
         )
     } else if (name === 'Chat') {
