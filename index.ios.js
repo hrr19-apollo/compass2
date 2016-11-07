@@ -15,6 +15,7 @@ import BottomNavBar from './src/components/BottomNavBar';
 import ChatList from './src/components/ChatList';
 import UserProfile from './src/components/UserProfile';
 import colors from './src/styles/colors';
+import buildStyleInterpolator from 'buildStyleInterpolator'
 
 
 
@@ -41,23 +42,33 @@ class compass2 extends Component {
     } else if (name === 'Chat') {
     } else if (name === 'UserProfile') {
       return (
-        <View> 
+        <View>
           <UserProfile navigator={navigator} />
-          <BottomNavBar viewLabel={'User'} navigator={navigator} /> 
+          <BottomNavBar viewLabel={'User'} navigator={navigator} />
         </View>
       )
     }
   }
 
   configureScene(route, routeStack){
-   return Navigator.SceneConfigs.HorizontalSwipeJump
-}
+    return {
+      gestures: null,
+      defaultTransitionVelocity: 1000,
+      springFriction: 1,
+      springTension: 100,
+      animationInterpolators: {
+        into: r => r.opacity = 1,
+        out: r => r.opacity = 1,
+      },
+    };
+  }
 
   // Change initialRoute to start on a different page if you're working on a different component
   render() {
+    console.log("bsi",buildStyleInterpolator)
     return (
       <Navigator
-      configureScene={ this.configureScene }
+      configureScene={this.configureScene}
       style={{ backgroundColor: 'white', }}
       initialRoute={{ name:'ChatList' }}
       renderScene={this.renderScene}
@@ -75,7 +86,6 @@ class compass2 extends Component {
          />
         }
       />
-
     )
   }
 };
