@@ -10,22 +10,23 @@ import {
 } from 'react-native';
 
 import { fullPageView } from '../styles/globalStyles';
+import BottomNavBar from './BottomNavBar';
 
 const Map = ({ navigator }) => {
 
   // destructuring the styles for easier readability in returned JSX
   const { 
     map,
-
   } = styles;
 
   return (
     <View style={fullPageView}>
       <MapView 
-      style={map} 
-      mapType={'hybrid'}
-      showUserLocation={true} 
-      followUserLocation={true} />
+        style={map} 
+        mapType={'hybrid'}
+        showUserLocation={true} 
+        followUserLocation={true} 
+      />
     </View>
   )
 };

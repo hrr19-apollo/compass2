@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 import Login from './src/components/Login';
 import Map from './src/components/Map';
+import BottomNavBar from './src/components/BottomNavBar';
+import ChatList from './src/components/ChatList';
+import colors from './src/styles/colors';
+
 
 
 class compass2 extends Component {
@@ -20,13 +24,25 @@ class compass2 extends Component {
     if (name === 'Login') {
       return <Login navigator={navigator} />
     } else if (name === 'Map') {
-      return <Map navigator={navigator} />
+      return (
+        <View> 
+          <Map navigator={navigator} />
+          <BottomNavBar currentView={'Map'} navigator={navigator} /> 
+        </View>
+        )
     } else if (name === 'ChatList') {
+      return (
+        <View> 
+          <ChatList navigator={navigator} />
+          <BottomNavBar currentView={'Chat'} navigator={navigator} /> 
+        </View>
+        )
     } else if (name === 'Chat') {
     } else if (name === 'UserProfile') {
     }
   }
 
+  // Change initialRoute to start on a different page if you're working on a different component
   render() {
     return (
       <Navigator
@@ -41,9 +57,9 @@ class compass2 extends Component {
             RightButton: (route, navigator, index, navState) =>
               { return; },
             Title: (route, navigator, index, navState) =>
-              { return (<Text>Compass</Text>); },
+              { return (<Text style={styles.navBarText}>Compass</Text>); },
            }}
-           style={{backgroundColor: 'white', height: 50}}
+           style={styles.navBar}
          />
         }
       />
@@ -52,7 +68,27 @@ class compass2 extends Component {
   }
 };
 
+const styles = {
+  navBar: {
+    backgroundColor: 'white',
+    height: 50,
 
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    borderBottomWidth: 0.5,
+    borderBottomColor: colors.extraLightGrey,
+  },
+  navBarText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginTop: 3,
+
+  },
+
+}
 
 AppRegistry.registerComponent('compass2', () => compass2);
 
