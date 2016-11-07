@@ -22,7 +22,7 @@ const ChatListItem = ({ navigator, userName, lastMessage }) => {
   } = styles;
 
   return (
-    <TouchableHighlight onPress={() => navigator.push({name: 'Map'})} underlayColor={colors.extraLightGrey} >
+    <TouchableHighlight onPress={() => navigator.push({name: 'Chat'})} underlayColor={colors.extraLightGrey} >
       <View style={container}>
         <View style={circle}>
           <Text style={bigLetter}>{userName[0]}</Text>
