@@ -24,13 +24,18 @@ const ChatList = ({ navigator }) => {
 
 const styles = {
   container: {
-    paddingTop: 50,
     backgroundColor: 'white',
+
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+
+    alignItems: 'flex-end',
+
     position: 'absolute',
     top: 0,
     left: 0,
+
+    paddingTop: 50,
   }
 }
 
