@@ -25,16 +25,16 @@ class compass2 extends Component {
       return <Login navigator={navigator} />
     } else if (name === 'Map') {
       return (
-        <View> 
+        <View>
           <Map navigator={navigator} />
-          <BottomNavBar viewLabel={'Map'} navigator={navigator} /> 
+          <BottomNavBar viewLabel={'Map'} navigator={navigator} />
         </View>
         )
     } else if (name === 'ChatList') {
       return (
-        <View> 
+        <View>
           <ChatList navigator={navigator} />
-          <BottomNavBar viewLabel={'Chat'} navigator={navigator} /> 
+          <BottomNavBar viewLabel={'Chat'} navigator={navigator} />
         </View>
         )
     } else if (name === 'Chat') {
@@ -42,10 +42,15 @@ class compass2 extends Component {
     }
   }
 
+  configureScene(route, routeStack){
+   return Navigator.SceneConfigs.HorizontalSwipeJump
+}
+
   // Change initialRoute to start on a different page if you're working on a different component
   render() {
     return (
       <Navigator
+      configureScene={ this.configureScene }
       style={{ backgroundColor: 'white', }}
       initialRoute={{ name:'Login' }}
       renderScene={this.renderScene}
