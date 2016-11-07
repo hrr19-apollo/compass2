@@ -54,7 +54,7 @@ class compass2 extends Component {
     return (
       <Navigator
       style={{ backgroundColor: 'white', }}
-      initialRoute={{ name:'UserProfile' }}
+      initialRoute={{ name:'ChatList' }}
       renderScene={this.renderScene}
       navigationBar={
         <Navigator.NavigationBar
