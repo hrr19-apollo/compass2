@@ -17,7 +17,9 @@ const ChatList = ({ navigator }) => {
 
   return (
     <View style={{...fullPageView, ...container}}>
-     <ChatListItem userName={'Cameron'} lastMessage={'Hey, what\'s up?'} navigator={navigator} />
+     <ChatListItem userName={'Anna-Sophie'} lastMessage={'Hey, what\'s up?'} navigator={navigator} />
+     <ChatListItem userName={'Mitch'} lastMessage={':partyparrot:'} navigator={navigator} />
+     <ChatListItem userName={'Evo'} lastMessage={'bbbb'} navigator={navigator} />
     </View>
   )
 };
