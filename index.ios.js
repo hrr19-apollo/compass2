@@ -51,17 +51,24 @@ class compass2 extends Component {
   }
 
   configureScene(route, routeStack){
-    return {
-      gestures: null,
-      defaultTransitionVelocity: 1000,
-      springFriction: 1,
-      springTension: 100,
-      animationInterpolators: {
-        into: r => r.opacity = 1,
-        out: r => r.opacity = 1,
-      },
+
+    let noTransition = {
+      opacity: {
+        value: 1.0,
+        type: 'constant'
+      }
     };
+
+   return  {
+    ...Navigator.SceneConfigs.PushFromRight,
+    gestures: null,
+    defaultTransitionVelocity: 1000,
+    animationInterpolators: {
+      into: buildStyleInterpolator(noTransition),
+      out: buildStyleInterpolator(noTransition)
+    }
   }
+}
 
   // Change initialRoute to start on a different page if you're working on a different component
   render() {
@@ -86,6 +93,7 @@ class compass2 extends Component {
          />
         }
       />
+
     )
   }
 };
